@@ -1,0 +1,46 @@
+@import "../../variable.scss";
+
+.bcci_tv_wrapper {
+  background: $white-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  padding: 0 70px;
+  box-shadow: 0 4px 8px 0 hsl(0deg 0% 7% / 50%);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .logo_wrapper {
+    height: 100%;
+    width: 95px;
+    img {
+      width: 95px;
+    }
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white-color;
+    list-style-type: none;
+    li {
+      padding: 18px 26px;
+      font-size: 17px;
+      font-weight: 700;
+      &:hover {
+        color: $hover-color;
+        cursor: pointer;
+      }
+    }
+  }
+  .auditions_poll {
+    width: 92px;
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@import "../../variable.scss";
+.point_table {
+  display: flex;
+  color: $white-color;
+  flex-direction: column;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .standings {
+      width: 50%;
+      display: inline-block;
+      text-align: center;
+      font-size: 14px;
+      color: $white-color;
+      font-weight: 700;
+      box-shadow: 0 3.30573px 6.61145px rgb(0 0 0 / 25%);
+      padding: 7px 5px;
+      &.active {
+        background: $tab-color;
+      }
+    }
+  }
+
+  .table {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8);
+    height: 100%;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .team {
+      background-color: $white-color;
+      margin-block: 3px;
+      border: 3px solid #ddd;
+      border-radius: 6px;
+      color: #0000;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      span {
+        color: #000;
+      }
+    }
+  }
+}

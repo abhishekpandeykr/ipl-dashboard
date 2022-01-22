@@ -1,0 +1,16 @@
+<div class="point_table">
+  <div class="container">
+    <div class="standings" [ngClass]="{ active: currentTable === 'STANDING' }">
+      Standings
+    </div>
+    <div class="standings">Playoff's</div>
+  </div>
+  <div class="table">
+    <p class="header">
+      <span *ngFor="let head of table_headers">{{ head }}</span>
+    </p>
+    <p class="team">
+      <span *ngFor="let head of team_values">{{ head }}</span>
+    </p>
+  </div>
+</div>

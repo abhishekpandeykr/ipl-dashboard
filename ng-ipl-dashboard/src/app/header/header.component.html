@@ -1,0 +1,19 @@
+<h4 class="bcci_tv_wrapper">
+  BCCI.tv
+  <a href="#">
+    <img src="../../assets/images/BCCI_logo.png" alt="BCCI Logo" />
+  </a>
+</h4>
+<header>
+  <a class="logo_wrapper">
+    <img [src]="logoPath" alt="Logo Image" />
+  </a>
+  <ul>
+    <li *ngFor="let menu of menuLinks">
+      {{ menu }}
+    </li>
+  </ul>
+  <a href="#" class="auditions_poll">
+    <img src="../../assets/images/fanpolls.png" alt="Audition's Poll" />
+  </a>
+</header>
