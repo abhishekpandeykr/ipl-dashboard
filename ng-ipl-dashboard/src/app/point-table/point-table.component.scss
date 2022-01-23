@@ -43,9 +43,44 @@
       color: #0000;
       align-items: center;
       display: flex;
+      height: 38px;
       justify-content: space-between;
       span {
         color: #000;
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .name {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        font-weight: 700;
+        img {
+          width: 30px;
+          margin-right: 4px;
+        }
+      }
+
+      .team_form {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        .form {
+          width: 24px;
+          height: 24px;
+          font-size: 12px;
+          line-height: 24px;
+          border-radius: 50%;
+          text-align: center;
+          color: $white-color;
+          font-weight: bolder;
+          &.lost {
+            background-color: red;
+          }
+          &.won {
+            background-color: green;
+          }
+        }
       }
     }
   }

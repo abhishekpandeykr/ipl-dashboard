@@ -9,8 +9,22 @@
     <p class="header">
       <span *ngFor="let head of table_headers">{{ head }}</span>
     </p>
-    <p class="team">
-      <span *ngFor="let head of team_values">{{ head }}</span>
-    </p>
+    <div class="team" *ngFor="let team of team_values">
+      <p class="name">
+        <img [src]="team.logo" alt="team Logo" />
+        <span>{{ team.name }}</span>
+      </p>
+      <span>{{ team.played }}</span>
+      <span>{{ team.netrr }}</span>
+      <span>{{ team.pts }}</span>
+      <p class="team_form">
+        <span
+          *ngFor="let f of team.form"
+          class="form"
+          [ngClass]="{ lost: f === 'L', won: f === 'W' }"
+          >{{ f }}</span
+        >
+      </p>
+    </div>
   </div>
 </div>

@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Oxygen", sans-serif;
+  src: url(assets/fonts/Oxygen/Oxygen-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Oxygen Mono", monospace;
+  src: url(assets/fonts/Oxygen_Mono/OxygenMono-Regular.ttf);
+}
+
 html,
 body {
   box-sizing: border-box;
@@ -6,6 +16,7 @@ body {
   width: 100%;
   padding: 0;
   margin: 0;
+  font-family: "Oxygen Mono", monospace;
   background: linear-gradient(
     92.04deg,
     #18184a 24.18%,
