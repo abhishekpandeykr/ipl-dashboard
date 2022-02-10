@@ -3,9 +3,11 @@ from flask import Flask, jsonify
 import sqlite3
 import csv
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS, cross_origin
 # from team_model import Player
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///players.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -35,6 +37,22 @@ db.create_all()
 
 
 class Player_data:
+
+
+    def map_result(player):
+        return {
+                "first_Name": player.first_Name,
+                "surname": player.surname,
+                "country": player.country,
+                "age": player.age,
+                "test_caps": player.test_caps,
+                "odi_caps": player.odi_caps,
+                "t20_caps": player.t20_caps,
+                "ipl": player.ipl,
+                "ipl_played_in_2021": player.ipl_played_in_2021,
+                "C_U_A": player.C_U_A,
+                "base_salary_in_lakhs": player.base_salary_in_lakhs
+        }
 
     def store_player_to_db():        
         # open a csv file to read and then convert them into json
@@ -73,20 +91,17 @@ class Player_data:
         players = Player.query.all()
         all_players = []
         for player in players:
-            all_players.append({
-                "first_Name": player.first_Name,
-                "surname": player.surname,
-                "country": player.country,
-                "age": player.age,
-                "test_caps": player.test_caps,
-                "odi_caps": player.odi_caps,
-                "t20_caps": player.t20_caps,
-                "ipl": player.ipl,
-                "ipl_played_in_2021": player.ipl_played_in_2021,
-                "C_U_A": player.C_U_A,
-                "base_salary_in_lakhs": player.base_salary_in_lakhs
-            })
+            all_players.append(Player_data.map_result(player))
         return jsonify(players = all_players)
+
+    @app.route("/players/<string:country>")
+    def get_players_by_country(country):
+        players = Player.query.filter_by(country=country).all()
+        all_players = []
+        for player in players:
+            all_players.append(Player_data.map_result(player))
+        return jsonify(players = all_players)
+
 
 if __name__ == '__main__':
     main_class = Player_data()

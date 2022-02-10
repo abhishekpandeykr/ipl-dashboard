@@ -10,6 +10,6 @@ export class AuthServiceService {
   constructor(private http: HttpClient) {}
 
   public getHomePage() {
-    return this.http.get(this.publicUrl);
+    return this.http.get(`${this.publicUrl}/players`);
   }
 }
