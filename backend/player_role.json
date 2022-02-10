@@ -1,0 +1,15 @@
+{
+    "player":{
+        "name":"",
+        "current_team":"",
+        "nationality":"",
+        "base_price":0,
+        "id":"",
+        "avatar":"",
+        "specialism":"",
+        "test_caps":0,
+        "odi_caps":0,
+        "t20_caps":0,
+        "ipl":0
+    }
+    }    
