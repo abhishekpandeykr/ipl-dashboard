@@ -12,13 +12,20 @@ interface IProps{
 }
 
 
+
 const Dashboard = ({players}:IProps) => {
-    console.log(players)
-  return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
-  );
+  console.log("players", players)
+  const renderPlayers = players.map((player:IPlayers, idx:number) => (
+    <div key={idx} className="individual_card">
+      <p>Name: {player.first_Name} {player.surname}</p>
+      <p>Country: {player.country}</p>
+      <p>Base Salary: {player.base_salary_in_lakhs > 99 ? `${player.base_salary_in_lakhs/100} Cr.`: `${player.base_salary_in_lakhs} lakh's`}</p>
+    </div>)
+  )
+
+  return (<div className="player_container">{renderPlayers}</div>)
+
 }
+
 
 export default Dashboard;
