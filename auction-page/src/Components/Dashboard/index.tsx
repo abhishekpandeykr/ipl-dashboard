@@ -14,7 +14,6 @@ interface IProps{
 
 
 const Dashboard = ({players}:IProps) => {
-  console.log("players", players)
   const renderPlayers = players.map((player:IPlayers, idx:number) => (
     <div key={idx} className="individual_card">
       <p>Name: {player.first_Name} {player.surname}</p>
