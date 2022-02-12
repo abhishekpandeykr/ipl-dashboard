@@ -102,7 +102,24 @@ class Player_data:
             all_players.append(Player_data.map_result(player))
         return jsonify(players = all_players)
 
+        # fetch all the teams which are stored in database
+    @app.route("/countries")
+    def get_all_countries():
+        unique_countries = db.session.query(Player.country).distinct().all()
+        print(unique_countries)
+        return jsonify(countries = [])
+    
+    # get all the players whose base salary is 2 crore
+    @app.route("/players/salary/<number>")
+    def player_salary(number):
+        players = Player.query.filter_by(base_salary_in_lakhs=number).all()
+        all_players = []
+        for player in players:
+            all_players.append(Player_data.map_result(player))
+        return jsonify(players = all_players)
+
 
 if __name__ == '__main__':
     main_class = Player_data()
+    Player_data.store_player_to_db()
     app.run(debug=True)
