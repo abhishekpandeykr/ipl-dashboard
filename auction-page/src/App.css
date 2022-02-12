@@ -40,3 +40,12 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
+.sold_price{
+  display: flex;
+  align-items: center;
+}
+
+.sold_price img{
+  margin-top: 5px;
+}

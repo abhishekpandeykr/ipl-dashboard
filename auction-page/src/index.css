@@ -1,6 +1,7 @@
 html, body{
   height: 100%;
   width: 100%;
+  background: linear-gradient( 92.04deg, #18184A 24.18%, #19398A 50.95%, #18184A 110.32%);
 }
 
 p {

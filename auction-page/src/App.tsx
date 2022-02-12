@@ -1,8 +1,9 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState, MouseEvent } from 'react'
 import Dashboard from './Components/Dashboard';
 import Header from './Components/Header';
 import flags from './constants/flags';
 import './App.css'
+import TeamTable from './Components/TeamTable';
 
 interface IPlayers{
   C_U_A: string,
@@ -19,7 +20,9 @@ function App() {
   const [players, setPlayers] = useState([])
   const [allPlayers, setAllPlayers] = useState([])
   const [countries, setCountries] = useState([])
+  const [iplTeams, setiplTeams] = useState(false)
   const [selected, setSelected] = useState('All')
+  const [allTeams, setAllTeams] = useState([])
 
   useEffect(() => {
     fetch(`${APP_URL}/players`)
@@ -33,6 +36,16 @@ function App() {
         setCountries(countries)
       })
   },[])
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      const teamsPromise = await fetch(`${APP_URL}/teams`)
+      const {teams} = await teamsPromise.json()
+      const filterdTeams = teams.filter(({team}:any) => team !== "NA")
+      setAllTeams(filterdTeams)
+    }
+    fetchTeams()
+  },[setiplTeams, iplTeams])
 
   const searchPlayer = (event:ChangeEvent<HTMLInputElement>) => {
     const searchValue = event.target.value
@@ -55,18 +68,31 @@ function App() {
     }
   }
 
+  const showIPLTeams = (event:MouseEvent<HTMLElement>) => {
+    setiplTeams(!iplTeams)
+  }
+
+  const renderAllPlayers = () => {
+    return (
+      <>
+        <div className='label_wrapper'>
+          {countries.map((country:string, idx:number) => (
+            <div key={idx} className={`country_chip ${selected === country ? 'active':''}`} onClick={selectedCountry(country)}>
+              <img src={flags[country]} alt={country}/>
+              {country}
+            </div>)
+          )}
+        </div>
+        <Dashboard players={players}/>
+      </>
+    )
+  }
+
   return (
     <div className="App">
-      <Header onChange={searchPlayer}/>
-      <div className='label_wrapper'>
-        {countries.map((country:string, idx:number) => (
-          <div key={idx} className={`country_chip ${selected === country ? 'active':''}`} onClick={selectedCountry(country)}>
-            <img src={flags[country]} alt={country}/>
-            {country}
-          </div>)
-        )}
-      </div>
-      <Dashboard players={players}/>
+      <Header onChange={searchPlayer} showIPLTeams={showIPLTeams} iplTeams={iplTeams}/>
+      {iplTeams && renderAllPlayers()}
+      {!iplTeams && <TeamTable teams={allTeams}/>}
     </div>
   )
 }
