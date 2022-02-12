@@ -36,3 +36,27 @@ body {
   justify-content: flex-start;
   padding-left: 10px;
 }
+
+
+.country_chip {
+  display: inline-block;
+  padding: 0 20px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  border-radius: 19px;
+  background-color: #f1f1f1;
+  margin: 6px;
+  cursor: pointer;
+}
+
+.label_wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
+  gap: 10px;
+}
+
+.active{
+  background-color: #666;
+}

@@ -12,16 +12,24 @@ interface IPlayers{
   surname: string, 
 }
 
+const APP_URL = "https://ipl-auction-board.herokuapp.com/"
+
 function App() {
   const [players, setPlayers] = useState([])
   const [allPlayers, setAllPlayers] = useState([])
+  const [countries, setCountries] = useState([])
+  const [selected, setSelected] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:5000/players')
+    fetch(`${APP_URL}/players`)
       .then(res => res.json())
       .then(res => {
         setPlayers(res.players)
         setAllPlayers(res.players)
+        // get all countries and store in countires array
+        let countries = res.players.map((player:IPlayers) => player.country)
+        countries = ['All', ...new Set(countries)]
+        setCountries(countries)
       })
   },[])
 
@@ -35,9 +43,23 @@ function App() {
     }
   }
 
+  const selectedCountry = (country:string) => async event => { 
+    setSelected(country)
+    if(country === 'All'){
+      setPlayers(allPlayers)
+    } else {
+      const countriesWithVal = await fetch(`${APP_URL}/players/${country}`)
+      const res = await countriesWithVal.json()
+      setPlayers(res.players)
+    }
+  }
+
   return (
     <div className="App">
       <Header onChange={searchPlayer}/>
+      <div className='label_wrapper'>
+        {countries.map((country:string, idx:number) => <p key={idx} className={`country_chip ${selected === country ? 'active':''}`} onClick={selectedCountry(country)}>{country}</p>)}
+      </div>
       <Dashboard players={players}/>
     </div>
   )
