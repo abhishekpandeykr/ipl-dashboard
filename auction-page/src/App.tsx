@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import Dashboard from './Components/Dashboard';
 import Header from './Components/Header';
+import flags from './constants/flags';
 import './App.css'
 
 interface IPlayers{
@@ -18,7 +19,7 @@ function App() {
   const [players, setPlayers] = useState([])
   const [allPlayers, setAllPlayers] = useState([])
   const [countries, setCountries] = useState([])
-  const [selected, setSelected] = useState('')
+  const [selected, setSelected] = useState('All')
 
   useEffect(() => {
     fetch(`${APP_URL}/players`)
@@ -43,7 +44,7 @@ function App() {
     }
   }
 
-  const selectedCountry = (country:string) => async event => { 
+  const selectedCountry = (country:string) => async (event:any) => { 
     setSelected(country)
     if(country === 'All'){
       setPlayers(allPlayers)
@@ -58,7 +59,12 @@ function App() {
     <div className="App">
       <Header onChange={searchPlayer}/>
       <div className='label_wrapper'>
-        {countries.map((country:string, idx:number) => <p key={idx} className={`country_chip ${selected === country ? 'active':''}`} onClick={selectedCountry(country)}>{country}</p>)}
+        {countries.map((country:string, idx:number) => (
+          <div key={idx} className={`country_chip ${selected === country ? 'active':''}`} onClick={selectedCountry(country)}>
+            <img src={flags[country]} alt={country}/>
+            {country}
+          </div>)
+        )}
       </div>
       <Dashboard players={players}/>
     </div>

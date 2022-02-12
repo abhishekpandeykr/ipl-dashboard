@@ -1,3 +1,12 @@
+html, body{
+  height: 100%;
+  width: 100%;
+}
+
+p {
+  margin: 0;
+}
+
 :root{
   --text-color:#FF4858;
   --green:#1B7F79;
@@ -14,14 +23,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--green);
+  background-color: var(--text-color);
 }
 
 .player_container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 10px;
+  gap: 10px;
 }
 
 .individual_card{
@@ -35,6 +45,7 @@ body {
   align-items: flex-start;
   justify-content: flex-start;
   padding-left: 10px;
+  gap: 10px;
 }
 
 
@@ -50,6 +61,14 @@ body {
   cursor: pointer;
 }
 
+.country_chip img {
+  float: left;
+  margin: 0 10px 0 -25px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
 .label_wrapper{
   display: flex;
   flex-wrap: wrap;
@@ -59,4 +78,8 @@ body {
 
 .active{
   background-color: #666;
+}
+
+.sold{
+  background: lightsteelblue;
 }
