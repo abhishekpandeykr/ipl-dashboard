@@ -1,0 +1,22 @@
+<div class="playerList_cotainer">
+  <table>
+    <tr>
+      <th>Sr. No</th>
+      <th>Player Name</th>
+      <th>Status</th>
+      <th>Country</th>
+      <th>Base Salary</th>
+      <th>Edit</th>
+    </tr>
+    <tr *ngFor="let player of players; let i = index">
+      <td>{{ player.list_sr_no }}</td>
+      <td>{{ player.first_Name }} {{ player.surname }}</td>
+      <td>{{ player.C_U_A }}</td>
+      <td>{{ player.country }}</td>
+      <td>{{ player.base_salary_in_lakhs }}</td>
+      <td>
+        <span (click)="editPlayer(player)" class="edit_button">Edit</span>
+      </td>
+    </tr>
+  </table>
+</div>

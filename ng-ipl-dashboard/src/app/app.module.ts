@@ -8,6 +8,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PointTableComponent } from './point-table/point-table.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PlayerListComponent } from './player-list/player-list.component';
+import { UpdatePlayerComponent } from './update-player/update-player.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,8 +19,15 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     PointTableComponent,
     LoginComponent,
+    PlayerListComponent,
+    UpdatePlayerComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

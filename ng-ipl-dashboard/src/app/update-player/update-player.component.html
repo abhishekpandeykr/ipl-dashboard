@@ -1,0 +1,29 @@
+<div class="form">
+  <form [formGroup]="playerForm">
+    <div class="input_wrapper">
+      <label for="fullName">First Name: </label>
+      <input id="fullName" type="text" formControlName="fullName" />
+    </div>
+
+    <div class="input_wrapper">
+      <label for="country">Country: </label>
+      <input id="country" type="text" formControlName="country" />
+    </div>
+
+    <div class="input_wrapper">
+      <label for="sold_to_team">Sold to Team: </label>
+      <input id="sold_to_team" type="text" formControlName="sold_to_team" />
+    </div>
+
+    <div class="input_wrapper">
+      <label for="sold_to_team_price">Sold to Team Price: </label>
+      <input
+        id="sold_to_team_price"
+        type="text"
+        formControlName="sold_to_team_price"
+      />
+    </div>
+
+    <input type="submit" value="Update" (click)="updatePlayer()" />
+  </form>
+</div>

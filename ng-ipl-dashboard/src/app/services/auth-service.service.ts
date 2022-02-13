@@ -9,7 +9,11 @@ export class AuthServiceService {
 
   constructor(private http: HttpClient) {}
 
-  public getHomePage() {
+  public getAllPlayers() {
     return this.http.get(`${this.publicUrl}/players`);
+  }
+
+  public updatePlayer(id: any, body: any) {
+    return this.http.patch(`${this.publicUrl}/players/update/${id}`, body);
   }
 }
