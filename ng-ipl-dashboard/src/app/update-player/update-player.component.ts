@@ -45,10 +45,6 @@ export class UpdatePlayerComponent implements OnInit {
           sold_to_team: currentPlayer.sold_to_team,
           sold_to_team_price: currentPlayer.sold_to_team_price,
         });
-        console.log(
-          this.playerForm.value,
-          this.playerForm.get('country')?.value
-        );
       }, 100);
     }
   }

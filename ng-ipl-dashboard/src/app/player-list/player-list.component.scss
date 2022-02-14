@@ -11,9 +11,6 @@
       text-align: left;
       padding: 8px;
     }
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
   }
 
   .edit_button {
@@ -28,4 +25,9 @@
     margin: 4px 2px;
     cursor: pointer;
   }
+}
+
+.sold {
+  // background-color: #ffc107;
+  background: mediumspringgreen;
 }

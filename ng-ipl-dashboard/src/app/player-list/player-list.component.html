@@ -8,7 +8,10 @@
       <th>Base Salary</th>
       <th>Edit</th>
     </tr>
-    <tr *ngFor="let player of players; let i = index">
+    <tr
+      *ngFor="let player of players; let i = index"
+      [ngClass]="{ sold: player.sold_to_team_price > 10 }"
+    >
       <td>{{ player.list_sr_no }}</td>
       <td>{{ player.first_Name }} {{ player.surname }}</td>
       <td>{{ player.C_U_A }}</td>
